@@ -4,19 +4,46 @@
 \documentclass[lang=cn,10pt]{elegantbook}
 
 \title{微分几何}
-\subtitle{《微分几何》（第2版）前三章笔记}
+\subtitle{前三章学习笔记}
 \author{东邪}
 \extrainfo{不要以为抹消过去，重新来过，即可发生什么改变。—— 比企谷八幡}
 \cover{images/cover.png}
+\logo{images/logo-blue.png}
 \date{2026年10月5日}
+\version{1.0}
+\bioinfo{内容}{定义、定理与必要公式}
 \setcounter{tocdepth}{1}
+
+% 数理统计封面原图为 1281 x 1024；固定同高的图片区，保持本图比例。
+% 仅在主文件补足画布留白，沿用原类文件的横带、文字、标志和座右铭布局。
+\makeatletter
+\patchcmd{\maketitle}
+  {\includegraphics[width=\linewidth]{\@cover}}
+  {\begin{minipage}[c][0.8\linewidth][c]{\linewidth}
+     \centering\includegraphics[width=\linewidth]{\@cover}
+   \end{minipage}}
+  {}{\ClassError{elegantbook}{Cover layout patch failed}{Check the cover command.}}
+% 将同款标志直接排在右侧信息栏，避免绝对定位受编译器缓存影响。
+\patchcmd{\maketitle}
+  {\begin{tikzpicture}[remember picture,overlay]
+   \begin{pgfonlayer}{background}
+   \node[opacity=0.8,
+         anchor=south east,
+         outer sep=0pt,
+         inner sep=0pt] at ($(current page.south east) +(-0.8in,1.5in)$) {
+   \ifcsname @logo\endcsname\includegraphics[width=4.2cm]{\@logo}\fi};
+   \end{pgfonlayer}
+   \end{tikzpicture}}
+  {\centering\includegraphics[width=4.2cm]{\@logo}}
+  {}{\ClassError{elegantbook}{Cover logo patch failed}{Check the logo command.}}
+\makeatother
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\dd}{\mathrm{d}}
 \newcommand{\vect}[1]{\boldsymbol{#1}}
 \DeclareMathOperator{\SO}{SO}
 \DeclareMathOperator{\GL}{GL}
-\hypersetup{pdftitle={微分几何：第2版前三章笔记},pdfauthor={东邪}}
+\hypersetup{pdftitle={微分几何：前三章学习笔记},pdfauthor={东邪}}
 
 \begin{document}
 \maketitle
