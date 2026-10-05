@@ -1,0 +1,459 @@
+\chapter{曲面的第一基本形式}
+\section{正则参数曲面}
+
+% 来源：第三章，page-0087.tex、page-0088.tex。
+\begin{definition}{参数曲面、参数曲线网与曲纹坐标}{parametric-surface}
+从区域 $D\subset E^2$（连通开子集）到 $E^3$ 的连续映射称为参数曲面，记为
+\[
+\vect r=\vect r(u,v)=(x(u,v),y(u,v),z(u,v)),\qquad(u,v)\in D.
+\]
+固定 $v=v_0$ 得到的曲线 $\vect r(u,v_0)$ 称为 $u$-曲线；
+固定 $u=u_0$ 得到的曲线 $\vect r(u_0,v)$ 称为 $v$-曲线。
+两族曲线构成参数曲线网，$(u,v)$ 称为曲纹坐标。
+\end{definition}
+
+% 来源：第三章，page-0088.tex。
+\begin{definition}{曲面的正则点与正则参数曲面}{regular-parametric-surface}
+若
+\[
+\vect r_u(u_0,v_0)\times\vect r_v(u_0,v_0)\neq\vect0,
+\]
+则称曲面在相应点正则。
+至少三次连续可微且处处满足 $\vect r_u\times\vect r_v\neq\vect0$
+的参数曲面称为正则参数曲面。
+\end{definition}
+
+% 来源：第三章，page-0089.tex。
+\begin{proposition}{曲面的局部 Monge 表示}{monge-form}
+正则参数曲面在任意一点的某个邻域内，可以表示为一个二元连续可微函数的图像。
+形如 $z=z(x,y)$ 的表示称为 Monge 形式，其参数方程为
+\[
+\vect r(x,y)=(x,y,z(x,y)),\qquad
+\vect r_x\times\vect r_y=(-z_x,-z_y,1)\neq\vect0.
+\]
+\end{proposition}
+
+% 来源：第三章，page-0090.tex。
+\begin{definition}{曲面的容许参数变换与定向}{surface-reparametrization}
+参数变换
+\[
+u=u(\tilde u,\tilde v),\qquad v=v(\tilde u,\tilde v)
+\]
+若至少三次连续可微，且
+\[
+\frac{\partial(u,v)}{\partial(\tilde u,\tilde v)}\neq0,
+\]
+则称为容许的参数变换。规定 $\vect r_u\times\vect r_v$ 所指的一侧为曲面的正侧。
+容许参数变换保持定向的充分必要条件是
+\[
+\frac{\partial(u,v)}{\partial(\tilde u,\tilde v)}>0.
+\]
+\end{definition}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第03章 曲面的第一基本形式/pages/page-0091.tex；原定义 1.1。
+\begin{definition}{正则曲面}{dg-3-def-1-1}
+设 S 是  \(E^{3}\)  的一个子集. 如果对于任意一点  \(p \in S\) , 必存在点 p 在  \(E^{3}\)  中的一个邻域  \(V \subset E^{3}\) , 以及  \(E^{2}\)  中的一个区域 U, 使得在 U 和  \(V \cap S\)  之间能够建立一一的、双向都是连续的对应, 并且该对应  \(r: U \to V \cap S \subset E^{3}\)  本身是一个正则参数曲面\par
+
+\[
+\boldsymbol {r} (u, v) = (x (u, v), y (u, v), z (u, v)), \quad (u, v) \in U,
+\]
+
+则称 S 是  \(E^{3}\)  中的一张正则曲面, 简称为曲面.
+\end{definition}
+
+% 来源：第三章，page-0092.tex。
+\begin{definition}{可定向曲面}{orientable-surface}
+若在正则曲面的每一点附近可以选取正则参数表示，使得在邻域重叠处
+任意两组参数之间的变换都满足
+\[
+\frac{\partial(u_1,v_1)}{\partial(u_2,v_2)}>0,
+\]
+则称该曲面可定向。
+\end{definition}
+
+% 来源：第三章，page-0094.tex、page-0095.tex，旋转面中的定义。
+\begin{definition}{旋转面、经线与纬线}{surface-of-revolution}
+平面曲线 $(f(v),0,g(v))$ 绕 $z$ 轴旋转所得的曲面称为旋转面。
+在 $f(v)>0$ 的部分，其参数方程为
+\[
+\vect r(u,v)=(f(v)\cos u,f(v)\sin u,g(v)).
+\]
+$u$-曲线称为纬线（平行圆），$v$-曲线称为经线。
+\end{definition}
+
+% 来源：第三章，page-0096.tex。
+\begin{definition}{直纹面、准线与直母线}{ruled-surface}
+单参数直线族形成的曲面称为直纹面，参数方程为
+\[
+\vect r(u,v)=\vect a(u)+v\vect l(u),\qquad\vect l(u)\neq\vect0.
+\]
+曲线 $\vect a(u)$ 称为准线，$v$-曲线称为直母线。
+其正则条件是
+\[
+(\vect a'(u)+v\vect l'(u))\times\vect l(u)\neq\vect0.
+\]
+\end{definition}
+
+% 来源：第三章，page-0097.tex、page-0098.tex。
+\begin{definition}{柱面、锥面与切线面}{special-ruled-surfaces}
+直母线彼此平行的直纹面称为柱面，其方向向量满足
+\[
+\vect l(u)\times\vect l'(u)=\vect0.
+\]
+直母线通过同一定点的直纹面称为锥面，即存在函数 $\lambda(u)$ 使得
+\[
+\vect a(u)+\lambda(u)\vect l(u)=\vect r_0\quad\text{（常向量）}.
+\]
+曲线 $\vect a(u)$ 的切线形成的曲面称为切线面，其参数方程为
+\[
+\vect r(u,v)=\vect a(u)+v\vect a'(u).
+\]
+\end{definition}
+
+\section{切平面和法线}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第03章 曲面的第一基本形式/pages/page-0099.tex；原定义 2.1。
+\begin{definition}{曲面的切向量}{dg-3-def-2-1}
+曲面 S 上经过点 p 的任意一条连续可微曲线在该点的切向量称为曲面 S 在点 p 的切向量.
+\end{definition}
+
+% 来源：第三章，page-0100.tex。
+\begin{definition}{切空间与切平面}{tangent-space}
+正则曲面 $S$ 在点 $p=\vect r(u,v)$ 的全体切向量构成二维向量空间
+\[
+T_pS=\operatorname{span}\{\vect r_u,\vect r_v\}.
+\]
+经过 $p$、由 $\vect r_u,\vect r_v$ 张成的平面称为切平面，方程为
+\[
+\vect X=\vect r(u,v)+\lambda\vect r_u(u,v)+\mu\vect r_v(u,v).
+\]
+\end{definition}
+
+% 来源：第三章，page-0100.tex、page-0101.tex。
+\begin{definition}{单位法向量、法线与自然标架}{surface-normal}
+曲面正侧的单位法向量为
+\[
+\vect n(u,v)=\frac{\vect r_u\times\vect r_v}{|\vect r_u\times\vect r_v|}.
+\]
+经过 $p=\vect r(u,v)$、以 $\vect n$ 为方向向量的直线称为法线，方程为
+\[
+\vect X(t)=\vect r(u,v)+t\vect n(u,v).
+\]
+标架 $\{\vect r(u,v);\vect r_u(u,v),\vect r_v(u,v),\vect n(u,v)\}$
+称为曲面的自然标架。
+\end{definition}
+
+% 来源：第三章，page-0101.tex。
+\begin{proposition}{切空间、切平面与法线的不变性}{tangent-invariance}
+曲面的切空间、切平面和法线在容许参数变换下不变。
+保持定向的参数变换保持单位法向量的指向，翻转定向的参数变换使其反向。
+可定向曲面存在连续可微的单位法向量场；在连通曲面上有两个互为反向的选择。
+\end{proposition}
+
+\section{第一基本形式}
+
+% 来源：第三章，page-0106.tex、page-0107.tex。
+\begin{definition}{第一类基本量与第一基本形式}{first-fundamental-form}
+第一类基本量定义为
+\[
+E=\vect r_u\cdot\vect r_u,\qquad
+F=\vect r_u\cdot\vect r_v,\qquad
+G=\vect r_v\cdot\vect r_v.
+\]
+第一基本形式定义为
+\[
+\mathrm I=\dd\vect r\cdot\dd\vect r
+=E\dd u^2+2F\dd u\dd v+G\dd v^2.
+\]
+对正则参数曲面，
+\[
+E>0,\qquad G>0,\qquad EG-F^2=|\vect r_u\times\vect r_v|^2>0.
+\]
+\end{definition}
+
+% 来源：第三章，page-0107.tex 至 page-0109.tex。
+\begin{proposition}{第一类基本量的变换与第一基本形式的不变性}{metric-transformation}
+对于容许的参数变换 $u=u(\tilde u,\tilde v)$、$v=v(\tilde u,\tilde v)$，记
+\[
+J=\begin{pmatrix}u_{\tilde u}&v_{\tilde u}\\u_{\tilde v}&v_{\tilde v}\end{pmatrix},
+\]
+则
+\[
+\begin{pmatrix}\tilde E&\tilde F\\\tilde F&\tilde G\end{pmatrix}
+=J\begin{pmatrix}E&F\\F&G\end{pmatrix}J^{\mathrm T}.
+\]
+第一基本形式与容许参数的选取无关。
+\end{proposition}
+
+% 来源：第三章，page-0109.tex。
+\begin{proposition}{切向量的长度、内积与夹角}{metric-inner-product}
+设 $X=a\vect r_u+b\vect r_v$、$Y=c\vect r_u+d\vect r_v$，则
+\[
+\begin{aligned}
+\mathrm I(X,Y)&=Eac+F(ad+bc)+Gbd,\\
+|X|^2&=\mathrm I(X,X)=Ea^2+2Fab+Gb^2.
+\end{aligned}
+\]
+对非零切向量 $X,Y$，
+\[
+\cos\angle(X,Y)=\frac{\mathrm I(X,Y)}
+{\sqrt{\mathrm I(X,X)}\sqrt{\mathrm I(Y,Y)}}.
+\]
+\end{proposition}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第03章 曲面的第一基本形式/pages/page-0109.tex；原定理 3.1。
+\begin{theorem}{正交参数曲线网的判别}{dg-3-thm-3-1}
+在正则参数曲面 \(S: \boldsymbol{r} = \boldsymbol{r}(u, v)\) 上参数曲线网是正交曲线网的充分必要条件是 \(F(u, v) \equiv 0\).
+\end{theorem}
+
+% 来源：第三章，page-0110.tex。
+\begin{proposition}{曲面上曲线的弧长}{surface-arc-length}
+设曲面上的曲线为 $\vect r(u(t),v(t))$，$a\leq t\leq b$，则
+\[
+\frac{\dd\vect r}{\dd t}=\vect r_u u'(t)+\vect r_v v'(t),
+\]
+\[
+L=\int_a^b\sqrt{E\,u'(t)^2+2F\,u'(t)v'(t)+G\,v'(t)^2}\dd t.
+\]
+其中 $E,F,G$ 取曲线相应点处的值。
+\end{proposition}
+
+% 来源：第三章，page-0111.tex、page-0112.tex。
+\begin{definition}{面积元素与面积}{surface-area}
+曲面的面积元素与参数区域 $D$ 所对应曲面片的面积分别为
+\[
+\dd\sigma=\sqrt{EG-F^2}\dd u\dd v,\qquad
+A=\iint_D\sqrt{EG-F^2}\dd u\dd v.
+\]
+面积与容许参数的选取无关。
+\end{definition}
+
+\section{曲面上正交参数曲线网的存在性}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第03章 曲面的第一基本形式/pages/page-0115.tex；原引理 （无编号）。
+\begin{lemma}{一次微分式的局部积分因子}{dg-3-lem-integrating-factor}
+设 \(f(u, v)\), \(g(u, v)\) 是定义在区域 \(D \subset E^2\) 上的两个不同时为零的连续可微函数. 则对于任意一点 \((u_0, v_0) \in D\), 必有它的一个邻域 \(U \subset D\), 以及定义在 \(U\) 上的非零连续函数 \(\lambda(u, v)\), 使得 \(\lambda(u, v)\) 是一次微分式\par
+
+\[
+\omega = f (u, v) \mathrm{d} u + g (u, v) \mathrm{d} v
+\]
+
+的积分因子, 即在 U 上存在某个连续可微函数  \(k(u,v)\) , 使得\par
+
+\[
+\lambda (u, v) (f (u, v) \mathrm{d} u + g (u, v) \mathrm{d} v) = \mathrm{d} k (u, v).
+\]
+\end{lemma}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第03章 曲面的第一基本形式/pages/page-0115.tex；原定理 4.1。
+\begin{theorem}{沿给定切向量场的局部参数系}{dg-3-thm-4-1}
+假定在正则参数曲面  \(S: \boldsymbol{r} = \boldsymbol{r}(u, v)\)  上有两个处处线性无关的连续可微的切向量场  \(\boldsymbol{a}(u, v), \boldsymbol{b}(u, v)\) . 则对于每一点  \(p \in S\) ，必有点 p 的邻域  \(U \subset S\) ，以及在 U 上的新的参数系  \((\tilde{u}, \tilde{v})\) ，使得新参数曲线的切向量  \(r_{\tilde{u}}, r_{\tilde{v}}\)  分别与 a, b 平行，即  \(r_{\tilde{u}} // a, r_{\tilde{v}} // b\) .
+\end{theorem}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第03章 曲面的第一基本形式/pages/page-0118.tex；原定理 4.2。
+\begin{theorem}{正交参数系的局部存在性}{dg-3-thm-4-2}
+在正则参数曲面 S:  \(\boldsymbol{r} = \boldsymbol{r}(u, v)\)  的每一点  \(p \in S\) ，必有点 p 的一个邻域  \(U \subset S\) ，以及在 U 上的新参数系  \((\tilde{u}, \tilde{v})\) ，使得新参数曲线的切向量  \(r_{\tilde{u}}\) ， \(r_{\tilde{v}}\)  是彼此正交的，即  \((\tilde{u}, \tilde{v})\)  是曲面 S 在 U 上的正交参数系.
+\end{theorem}
+
+\section{保长对应和保角对应}
+
+% 来源：第三章，page-0120.tex 至 page-0122.tex。
+\begin{definition}{曲面间的映射及切映射}{surface-map}
+曲面映射 $\sigma:S_1\to S_2$ 在参数下可表示为
+\[
+u_2=f(u_1,v_1),\qquad v_2=g(u_1,v_1).
+\]
+若参数表达式连续可微，则称映射连续可微。
+设 $c(t)$ 是 $S_1$ 上经过 $p=c(t_0)$ 的曲线，定义
+\[
+\sigma_{*p}\bigl(c'(t_0)\bigr)=(\sigma\circ c)'(t_0).
+\]
+线性映射 $\sigma_{*p}:T_pS_1\to T_{\sigma(p)}S_2$ 称为 $\sigma$ 在 $p$ 诱导的切映射。
+\end{definition}
+
+% 来源：第三章，page-0122.tex、page-0123.tex。
+\begin{proposition}{切映射的坐标表达与非退化条件}{differential-coordinates}
+对于 $X=a\vect r_{1,u_1}+b\vect r_{1,v_1}$，
+\[
+\sigma_{*p}(X)=(af_{u_1}+bf_{v_1})\vect r_{2,u_2}
++(ag_{u_1}+bg_{v_1})\vect r_{2,v_2}.
+\]
+切映射是同构的充分必要条件是
+\[
+\left.\frac{\partial(u_2,v_2)}{\partial(u_1,v_1)}\right|_p\neq0.
+\]
+\end{proposition}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第03章 曲面的第一基本形式/pages/page-0123.tex；原定理 5.1。
+\begin{theorem}{映射的适用参数系}{dg-3-thm-5-1}
+设 \(\sigma: S_1 \to S_2\) 是从正则参数曲面 \(S_1\) 到正则参数曲面 \(S_2\) 的3次以上的连续可微映射。如果在点 \(p \in S_1\)，切映射 \(\sigma_{*p}: T_p S_1 \to T_{\sigma(p)} S_2\) 是切空间 \(T_p S_1\) 和 \(T_{\sigma(p)} S_2\) 之间的同构，则有点 \(p\) 在 \(S_1\) 中的邻域 \(U_1\) 和点 \(\sigma(p)\) 在 \(S_2\) 中的邻域 \(U_2\)，以及相应的参数系 \((u_1, v_1)\) 和 \((u_2, v_2)\)，使得 \(\sigma(U_1) \subset U_2\)，并且映射 \(\sigma|_{U_1}\) 是由\par
+
+\begin{equation*}
+u _ {2} = u _ {1}, \quad v _ {2} = v _ {1}
+\end{equation*}
+
+给出的. 换言之, 在适当地选取曲面 \(S_{1}\) 和 \(S_{2}\) 上的参数系之后, 映射 \(\sigma|_{U_1}\) 是从参数区域 \(U_{1}\) 到 \(U_{2}\) 的、有相同参数值的点之间的对应.
+\end{theorem}
+
+% 来源：第三章，page-0123.tex。
+\begin{definition}{适用参数系}{adapted-coordinates}
+使映射 $\sigma:S_1\to S_2$ 能表示为 $u_2=u_1$、$v_2=v_1$ 的参数系，
+称为两曲面上关于映射 $\sigma$ 的适用参数系。
+\end{definition}
+
+% 来源：第三章，page-0123.tex 至 page-0125.tex。
+\begin{definition}{二次微分式的拉回}{pullback}
+设 $\varphi$ 是 $S_2$ 上的二次微分式，$\sigma:S_1\to S_2$。
+其拉回 $\sigma^*\varphi$ 定义为
+\[
+(\sigma^*\varphi)_p(X,Y)
+=\varphi_{\sigma(p)}(\sigma_{*p}X,\sigma_{*p}Y).
+\]
+若 $\varphi=A\dd u_2^2+2B\dd u_2\dd v_2+C\dd v_2^2$，
+$u_2=f(u_1,v_1)$、$v_2=g(u_1,v_1)$，则
+\[
+\sigma^*\varphi=(A\circ\sigma)(\dd f)^2
++2(B\circ\sigma)\dd f\dd g+(C\circ\sigma)(\dd g)^2.
+\]
+\end{definition}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第03章 曲面的第一基本形式/pages/page-0125.tex；原定义 5.1。
+\begin{definition}{保长对应}{dg-3-def-5-1}
+设  \(\sigma: S_{1} \rightarrow S_{2}\)  是从正则参数曲面  \(S_{1}\)  到正则参数曲面  \(S_{2}\)  的 3 次以上的连续可微映射。如果在每一点  \(p \in S_{1}\) ，切映射  \(\sigma_{*p}: T_{p}S_{1} \rightarrow T_{\sigma(p)}S_{2}\)  都保持切向量的长度不变，即对于任意的  \(X \in T_{p}S_{1}\)  都有  \(|\sigma_{*p}(\boldsymbol{X})| = |\boldsymbol{X}|\) ，则称  \(\sigma: S_{1} \rightarrow S_{2}\)  是从曲面  \(S_{1}\)  到曲面  \(S_{2}\)  的保长对应。
+\end{definition}
+
+% 来源：第三章，page-0125.tex。
+\begin{proposition}{保长对应保持内积}{isometry-inner-product}
+若 $\sigma:S_1\to S_2$ 是保长对应，则对任意 $X,Y\in T_pS_1$，
+\[
+\sigma_{*p}(X)\cdot\sigma_{*p}(Y)=X\cdot Y.
+\]
+\end{proposition}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第03章 曲面的第一基本形式/pages/page-0126.tex；原定理 5.2。
+\begin{theorem}{保长对应的第一基本形式条件}{dg-3-thm-5-2}
+假定正则参数曲面  \(S_{1}\)  和  \(S_{2}\)  的第一基本形式分别是  \(I_{1}\)  和  \(I_{2}\) ，则  \(\sigma: S_{1} \rightarrow S_{2}\)  是从曲面  \(S_{1}\)  到曲面  \(S_{2}\)  的保长对应的充分必要条件是\par
+
+\begin{equation*}
+\sigma^ {*} \mathrm{I} _ {2} = \mathrm{I} _ {1}.
+\end{equation*}
+\end{theorem}
+
+% 来源：第三章，page-0127.tex，公式 (5.20) 的矩阵形式。
+\begin{proposition}{保长对应的矩阵条件}{isometry-matrix}
+对于 $u_2=f(u_1,v_1)$、$v_2=g(u_1,v_1)$，记
+\[
+J=\begin{pmatrix}f_{u_1}&g_{u_1}\\f_{v_1}&g_{v_1}\end{pmatrix},
+\]
+则保长对应的条件是
+\[
+\begin{pmatrix}E_1&F_1\\F_1&G_1\end{pmatrix}
+=J\begin{pmatrix}E_2&F_2\\F_2&G_2\end{pmatrix}J^{\mathrm T}.
+\]
+右端基本量取在映射后的对应点。
+\end{proposition}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第03章 曲面的第一基本形式/pages/page-0127.tex；原定理 5.3。
+\begin{theorem}{适用参数系下保长对应的判别}{dg-3-thm-5-3}
+在正则曲面  \(S_{1}\)  和  \(S_{2}\)  之间存在保长对应的充分必要条件是；能够在曲面  \(S_{1}\)  和  \(S_{2}\)  上取适当的参数系，都记成  \((u,v)\) ，并且在\par
+
+这样的参数系下这两个曲面有相同的第一类基本量, 即\par
+
+\begin{equation*}
+E _ {1} (u, v) = E _ {2} (u, v), F _ {1} (u, v) = F _ {2} (u, v), G _ {1} (u, v) = G _ {2} (u, v).
+\end{equation*}
+\end{theorem}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第03章 曲面的第一基本形式/pages/page-0129.tex；原定义 5.2。
+\begin{definition}{保角对应}{dg-3-def-5-2}
+设  \(\sigma: S_{1} \rightarrow S_{2}\)  是从正则参数曲面  \(S_{1}\)  到正则参数曲面  \(S_{2}\)  的一一对应，并且它和它的逆映射都是 3 次以上的连续可微映射。如果在每一点  \(p \in S_{1}\) ，切映射  \(\sigma_{*p}: T_{p}S_{1} \rightarrow T_{\sigma(p)}S_{2}\)  都保持切向量的夹角不变，即对于任意的  \(X, Y \in T_{p}S_{1}\)  都有\par
+
+\begin{equation*}
+\angle (\sigma_ {* p} (X), \sigma_ {* p} (Y)) = \angle (X, Y),
+\end{equation*}
+
+则称 \(\sigma : S_1 \to S_2\) 是从曲面 \(S_1\) 到曲面 \(S_2\) 的保角对应.
+\end{definition}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第03章 曲面的第一基本形式/pages/page-0129.tex；原定理 5.4。
+\begin{theorem}{保角对应的第一基本形式条件}{dg-3-thm-5-4}
+假定正则参数曲面  \(S_{1}\)  和  \(S_{2}\)  的第一基本形式分别是  \(I_{1}\)  和  \(I_{2}\) ，则  \(\sigma: S_{1} \rightarrow S_{2}\)  是从曲面  \(S_{1}\)  到曲面  \(S_{2}\)  的保角对应的充分必要条件是，在曲面  \(S_{1}\)  上存在正的连续函数  \(\lambda\) ，使得\par
+
+\begin{equation*}
+\sigma^ {*} \mathrm{I} _ {2} = \lambda^ {2} \mathrm{I} _ {1}.
+\end{equation*}
+
+特别地, 如果 \(\sigma: S_{1} \rightarrow S_{2}\) 是从曲面 \(S_{1}\) 到曲面 \(S_{2}\) 的保角对应, 则在曲面 \(S_{1}\) 和 \(S_{2}\) 上能够取适当的参数系, 都记成 \((u, v)\), 使得在这样的参数系下这两个曲面的第一类基本量成比例, 即存在正的连续函数 \(\lambda\), 使得\par
+
+\begin{equation*}
+\begin{array}{l} E _ {2} (u, v) = \lambda^ {2} (u, v) E _ {1} (u, v), \\ F _ {2} (u, v) = \lambda^ {2} (u, v) F _ {1} (u, v), \\ G _ {2} (u, v) = \lambda^ {2} (u, v) G _ {1} (u, v). \end{array}
+\end{equation*}
+\end{theorem}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第03章 曲面的第一基本形式/pages/page-0132.tex；原定理 5.5。
+\begin{theorem}{局部保角对应的存在性}{dg-3-thm-5-5}
+任意一个正则参数曲面 \(S\) 的每一点 \(p\), 都有一个邻域 \(U\) 可以和平面上的一个开区域建立保角对应. 换言之, 任意两个正则参数曲面在局部上都可以建立保角对应.
+\end{theorem}
+
+% 来源：第三章，page-0133.tex。
+\begin{definition}{等温参数系}{isothermal-coordinates}
+使第一基本形式可表示为
+\[
+\mathrm I=\lambda(x,y)^2(\dd x^2+\dd y^2),\qquad\lambda(x,y)>0,
+\]
+的参数系 $(x,y)$ 称为等温参数系。
+\end{definition}
+
+\section{可展曲面}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第03章 曲面的第一基本形式/pages/page-0136.tex；原定义 6.1。
+\begin{definition}{可展曲面}{dg-3-def-6-1}
+设 \(S\) 是直纹面. 如果曲面 \(S\) 的切平面沿每一条直母线是不变的, 则称该直纹面是可展曲面.
+\end{definition}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第03章 曲面的第一基本形式/pages/page-0136.tex；原定理 6.1。
+\begin{theorem}{可展曲面的判别}{dg-3-thm-6-1}
+设直纹面 S 的参数方程是  \(\boldsymbol{r} = \boldsymbol{a}(u) + v\boldsymbol{l}(u)\) ，则 S 是可展曲面的充分必要条件是，向量函数  \(\boldsymbol{a}(u), \boldsymbol{l}(u)\)  满足方程\par
+
+\begin{equation*}
+(\boldsymbol {a} ^ {\prime} (u), \boldsymbol {l} (u), \boldsymbol {l} ^ {\prime} (u)) = 0.
+\end{equation*}
+\end{theorem}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第03章 曲面的第一基本形式/pages/page-0137.tex；原定理 6.2。
+\begin{theorem}{可展曲面的局部分类}{dg-3-thm-6-2}
+可展曲面在局部上是柱面、锥面和一条空间曲线的切线面, 或者是用这三种曲面以充分连续可微的方式沿直母线拼接的结果.
+\end{theorem}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第03章 曲面的第一基本形式/pages/page-0139.tex；原定理 6.3。
+\begin{theorem}{可展曲面与平面的局部保长对应}{dg-3-thm-6-3}
+可展曲面在局部上可以和平面建立保长对应.
+\end{theorem}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第03章 曲面的第一基本形式/pages/page-0142.tex；原定义 6.2。
+\begin{definition}{单参数曲面族的包络}{dg-3-def-6-2}
+设  \(\{S_{\alpha}\}\)  是依赖参数  \(\alpha\)  的一族正则曲面. 如果有一个正则曲面 S, 使得 S 上的每一点必定是曲面族  \(\{S_{\alpha}\}\)  中的某个曲面  \(S_{\alpha}\)  上的一点, 并且曲面 S 和  \(S_{\alpha}\)  在该点有相同的切平面; 反过来, 曲面族  \(\{S_{\alpha}\}\)  中的每一个成员必定与曲面 S 在某一点有相同的切平面, 则称曲面 S 是单参数曲面族  \(\{S_{\alpha}\}\)  的包络.
+\end{definition}
+
+% 来源：第三章，page-0143.tex。
+\begin{definition}{特征线与判别曲面}{characteristic-curve}
+设单参数曲面族由 $F(x,y,z,\alpha)=0$ 给出。
+对于固定的 $\alpha$，方程组
+\[
+\begin{cases}
+F(x,y,z,\alpha)=0,\\
+F_\alpha(x,y,z,\alpha)=0
+\end{cases}
+\]
+的解曲线称为特征线。
+消去 $\alpha$ 所得的曲面 $\Phi(x,y,z)=0$ 称为判别曲面。
+\end{definition}
+
+% 来源：第三章，page-0143.tex。
+\begin{proposition}{包络的判别方程}{envelope-equations}
+对于单参数曲面族 $F(x,y,z,\alpha)=0$，包络上的点满足
+\[
+F(x,y,z,\alpha)=0,\qquad F_\alpha(x,y,z,\alpha)=0.
+\]
+若所得判别曲面正则，且曲面族中的对应曲面也在接触点正则，则该判别曲面为曲面族的包络。
+\end{proposition}

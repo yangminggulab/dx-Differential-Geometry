@@ -1,0 +1,468 @@
+\chapter{曲线论}
+\section{正则参数曲线}
+
+% 来源：第二章，page-0035.tex 至 page-0038.tex。
+\begin{definition}{参数曲线、正则点与正则参数曲线}{regular-curve}
+从区间 $[a,b]$ 到 $E^3$ 的连续映射称为参数曲线，记为
+\[
+\vect r(t)=(x(t),y(t),z(t)),\qquad a\leq t\leq b.
+\]
+若 $\vect r'(t)\neq\vect0$，则称对应点为正则点，$\vect r'(t)$ 为切向量。
+至少三次连续可微、处处满足 $\vect r'(t)\neq\vect0$ 的参数曲线称为正则参数曲线。
+参数增大的方向称为该参数曲线的正向。
+\end{definition}
+
+% 来源：第二章，page-0037.tex。
+\begin{definition}{曲线的切线}{curve-tangent}
+正则参数曲线在参数 $t$ 对应点处的切线为
+\[
+\vect X(u)=\vect r(t)+u\vect r'(t),\qquad u\in\R.
+\]
+\end{definition}
+
+% 来源：第二章，page-0037.tex、page-0038.tex。
+\begin{definition}{容许参数变换与有向正则曲线}{curve-reparametrization}
+至少三次连续可微且 $t'(u)\neq0$ 的参数变换 $t=t(u)$ 称为容许的参数变换。
+由全体等价的正则参数曲线构成的集合称为正则曲线。
+若只容许 $t'(u)>0$ 的保持定向的参数变换，则其等价类称为有向正则曲线。
+\end{definition}
+
+\section{曲线的弧长}
+
+% 来源：第二章，page-0043.tex、page-0044.tex。
+\begin{definition}{弧长、弧长参数与弧长元素}{arc-length}
+曲线 $\vect r(t)$ 在 $a\leq t\leq b$ 上的弧长为
+\[
+L=\int_a^b|\vect r'(t)|\dd t.
+\]
+以
+\[
+s(t)=\int_{t_0}^t|\vect r'(t)|\dd t
+\]
+作为参数时，称 $s$ 为弧长参数。弧长元素为
+\[
+\dd s=|\vect r'(t)|\dd t.
+\]
+\end{definition}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第02章 曲线论/pages/page-0044.tex；原定理 2.1。
+\begin{theorem}{弧长参数的判别}{dg-2-thm-2-1}
+设 \(\boldsymbol{r} = \boldsymbol{r}(t)(a \leqslant t \leqslant b)\) 是 \(E^3\) 中的一条正则曲线, 则 \(t\) 是它的弧长参数的充分必要条件是 \(|\boldsymbol{r}'(t)| \equiv 1\).
+\end{theorem}
+
+\section{曲线的曲率和 Frenet 标架}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第02章 曲线论/pages/page-0045.tex；原定理 3.1。
+\begin{theorem}{单位切向量的转角变化率}{dg-2-thm-3-1}
+设 \(\alpha(s)\) 是曲线 \(r(s)\) 的单位切向量场, \(s\) 是弧长参数, 用 \(\Delta\theta\) 表示切向量 \(\alpha(s + \Delta s)\) 和 \(\alpha(s)\) 之间的夹角, 则\par
+
+\begin{equation*}
+\lim _ {\Delta s \to 0} \left| \frac {\Delta \theta}{\Delta s} \right| = \left| \frac {\mathrm{d} \alpha}{\mathrm{d} s} \right|.
+\end{equation*}
+\end{theorem}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第02章 曲线论/pages/page-0046.tex；原定义 3.1。
+\begin{definition}{曲率与曲率向量}{dg-2-def-3-1}
+设曲线 C 的方程是  \(\boldsymbol{r}(s)\) ，其中 s 是曲线的弧长参数.命\par
+
+\begin{equation*}
+\kappa (s) = \left| \frac {\mathrm{d} \alpha}{\mathrm{d} s} \right| = | \boldsymbol {r} ^ {\prime \prime} (s) |,
+\end{equation*}
+
+称 \(\kappa(s)\) 为曲线 \(r(s)\) 在 \(s\) 处的曲率, 并且称 \(\frac{\mathrm{d}\alpha}{\mathrm{d}s}\) 为该曲线的曲率向量.
+\end{definition}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第02章 曲线论/pages/page-0046.tex；原定理 3.2。
+\begin{theorem}{直线的曲率判别}{dg-2-thm-3-2}
+曲线 \(C\) 是一条直线当且仅当它的曲率 \(\kappa(s) \equiv 0\).
+\end{theorem}
+
+% 来源：第二章，page-0046.tex、page-0047.tex。
+\begin{definition}{切线像}{tangent-indicatrix}
+把曲线的单位切向量 $\vect\alpha(s)$ 平行移动到同一个原点，
+其端点描出的曲线称为原曲线的切线像，参数方程为
+\[
+\tilde{\vect r}(s)=\vect\alpha(s),\qquad
+\dd\tilde s=\kappa(s)\dd s.
+\]
+\end{definition}
+
+% 来源：第二章，page-0047.tex 至 page-0049.tex。
+\begin{definition}{主法向量、次法向量与 Frenet 标架}{frenet-frame}
+设 $s$ 为弧长参数。在 $\kappa(s)>0$ 的点，定义
+\[
+\vect\alpha(s)=\vect r'(s),\qquad
+\vect\beta(s)=\frac{\vect r''(s)}{|\vect r''(s)|},\qquad
+\vect\gamma(s)=\vect\alpha(s)\times\vect\beta(s).
+\]
+$\vect\beta$ 称为主法向量，$\vect\gamma$ 称为次法向量。
+右手单位正交标架 $\{\vect r(s);\vect\alpha(s),\vect\beta(s),\vect\gamma(s)\}$
+称为曲线的 Frenet 标架。
+\end{definition}
+
+% 来源：第二章，page-0048.tex。
+\begin{definition}{Frenet 标架的三条轴与三个坐标面}{frenet-planes}
+Frenet 标架的三条轴分别称为切线、主法线、次法线，方程分别为
+\[
+\vect X=\vect r(s)+u\vect\alpha(s),\quad
+\vect X=\vect r(s)+u\vect\beta(s),\quad
+\vect X=\vect r(s)+u\vect\gamma(s).
+\]
+法平面、从切平面、密切平面的方程分别为
+\[
+\begin{aligned}
+(\vect X-\vect r(s))\cdot\vect\alpha(s)&=0,\\
+(\vect X-\vect r(s))\cdot\vect\beta(s)&=0,\\
+(\vect X-\vect r(s))\cdot\vect\gamma(s)&=0.
+\end{aligned}
+\]
+\end{definition}
+
+% 来源：第二章，page-0049.tex。
+\begin{proposition}{任意参数下的曲率与 Frenet 标架}{general-frenet}
+设 $\vect r=\vect r(t)$ 为正则参数曲线，并且 $\vect r'\times\vect r''\neq\vect0$，则
+\[
+\begin{aligned}
+\kappa(t)&=\frac{|\vect r'(t)\times\vect r''(t)|}{|\vect r'(t)|^3},\\
+\vect\alpha(t)&=\frac{\vect r'(t)}{|\vect r'(t)|},\\
+\vect\gamma(t)&=\frac{\vect r'(t)\times\vect r''(t)}{|\vect r'(t)\times\vect r''(t)|},\\
+\vect\beta(t)&=\vect\gamma(t)\times\vect\alpha(t).
+\end{aligned}
+\]
+\end{proposition}
+
+\section{曲线的挠率和 Frenet 公式}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第02章 曲线论/pages/page-0054.tex；原定义 4.1。
+\begin{definition}{挠率}{dg-2-def-4-1}
+设  \(\beta(s)\)  和  \(\gamma(s)\)  分别是曲线 C 的主法向量和次法向量，其中 s 是曲线的弧长参数，则  \(\tau(s) = -\gamma'(s) \cdot \beta(s)\)  称为曲线 C 的挠率.
+\end{definition}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第02章 曲线论/pages/page-0054.tex；原定理 4.1。
+\begin{theorem}{平面曲线的挠率判别}{dg-2-thm-4-1}
+设曲线 C 不是直线, 则它是平面曲线当且仅当它的挠率为零.
+\end{theorem}
+
+% 来源：第二章，page-0055.tex、page-0056.tex。
+\begin{proposition}{Frenet 公式}{frenet-formulas}
+设 $s$ 为弧长参数，$\kappa(s)>0$，则
+\[
+\begin{cases}
+\vect r'=\vect\alpha,\\
+\vect\alpha'=\kappa\vect\beta,\\
+\vect\beta'=-\kappa\vect\alpha+\tau\vect\gamma,\\
+\vect\gamma'=-\tau\vect\beta.
+\end{cases}
+\]
+等价的矩阵形式为
+\[
+\begin{pmatrix}\vect\alpha'\\\vect\beta'\\\vect\gamma'\end{pmatrix}
+=\begin{pmatrix}0&\kappa&0\\-\kappa&0&\tau\\0&-\tau&0\end{pmatrix}
+\begin{pmatrix}\vect\alpha\\\vect\beta\\\vect\gamma\end{pmatrix}.
+\]
+\end{proposition}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第02章 曲线论/pages/page-0056.tex；原定理 4.2。
+\begin{theorem}{球面曲线的必要条件}{dg-2-thm-4-2}
+设曲线 \(r = r(s)\) 的曲率 \(\kappa(s)\) 和挠率 \(\tau(s)\) 都不为零, \(s\) 是弧长参数. 如果该曲线落在一个球面上, 则它的曲率和挠率必满足关系式\par
+
+\begin{equation*}
+\left(\frac {1}{\kappa (s)}\right) ^ {2} + \left(\frac {1}{\tau (s)} \frac {\mathrm{d}}{\mathrm{d} s} \left(\frac {1}{\kappa (s)}\right)\right) ^ {2} = \text {\text{常数}}.
+\end{equation*}
+\end{theorem}
+
+% 来源：第二章，page-0057.tex，注记中的公式 (4.16)。
+\begin{proposition}{球面曲线满足的微分关系}{spherical-differential}
+设曲线以 $s$ 为弧长参数、落在球面上，且 $\kappa\tau\neq0$，则
+\[
+\frac{\tau(s)}{\kappa(s)}+
+\frac{\dd}{\dd s}\left[
+\frac1{\tau(s)}\frac{\dd}{\dd s}\left(\frac1{\kappa(s)}\right)\right]=0.
+\]
+\end{proposition}
+
+% 来源：第二章，page-0058.tex。
+\begin{proposition}{挠率的计算公式}{torsion-formula}
+当 $\vect r'\times\vect r''\neq\vect0$ 时，
+\[
+\tau(t)=\frac{(\vect r'(t),\vect r''(t),\vect r'''(t))}
+{|\vect r'(t)\times\vect r''(t)|^2}.
+\]
+若 $s$ 为弧长参数，则
+\[
+\tau(s)=\frac{(\vect r'(s),\vect r''(s),\vect r'''(s))}{|\vect r''(s)|^2}.
+\]
+\end{proposition}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第02章 曲线论/pages/page-0058.tex；原定理 4.3。
+\begin{theorem}{平面曲线的混合积判别}{dg-2-thm-4-3}
+曲线 \(r = r(t)\) 是一条平面曲线的充分必要条件是\par
+
+\begin{equation*}
+(\boldsymbol {r} ^ {\prime} (t), \boldsymbol {r} ^ {\prime \prime} (t), \boldsymbol {r} ^ {\prime \prime \prime} (t)) \equiv 0.
+\end{equation*}
+\end{theorem}
+
+\section{曲线论基本定理}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第02章 曲线论/pages/page-0060.tex；原定理 5.1。
+\begin{theorem}{曲线的唯一性}{dg-2-thm-5-1}
+设  \(\boldsymbol{r} = \boldsymbol{r}_{1}(s)\)  和  \(\boldsymbol{r} = \boldsymbol{r}_{2}(s)\)  是  \(E^{3}\)  中两条以弧长 s 为参数的正则参数曲线, 如果它们的曲率处处不为零, 并且它们的曲率和挠率分别相等, 即  \(\kappa_{1}(s) = \kappa_{2}(s)\) ,  \(\tau_{1}(s) = \tau_{2}(s)\) , 则有  \(E^{3}\)  中的一个刚体运动  \(\sigma\) , 它把曲线  \(\boldsymbol{r} = \boldsymbol{r}_{1}(s)\)  变为曲线  \(\boldsymbol{r} = \boldsymbol{r}_{2}(s)\) .
+\end{theorem}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第02章 曲线论/pages/page-0061.tex；原定理 5.2。
+\begin{theorem}{一般参数下曲线的唯一性}{dg-2-thm-5-2}
+设 \(r = r_1(t)\) 和 \(r = r_2(u)\) 是 \(E^3\) 中两条正则参数曲线, 它们的曲率处处不为零. 如果存在三次以上的连续可微函数 \(u = \lambda(t), \lambda'(t) \neq 0\), 使得这两条曲线的弧长函数、曲率函数和挠率函数之间有关系式\par
+
+\begin{equation*}
+s _ {1} (t) = s _ {2} (\lambda (t)), \quad \kappa_ {1} (t) = \kappa_ {2} (\lambda (t)), \quad \tau_ {1} (t) = \tau_ {2} (\lambda (t)),
+\end{equation*}
+
+则有  \(E^{3}\)  中的一个刚体运动  \(\sigma\) ，它把曲线  \(\boldsymbol{r} = \boldsymbol{r}_{1}(t)\)  变为曲线  \(\boldsymbol{r} = \boldsymbol{r}_{2}(u)\) ，即曲线  \(\boldsymbol{r} = \boldsymbol{r}_{2}(\lambda(t))\)  是曲线  \(\boldsymbol{r} = \boldsymbol{r}_{1}(t)\)  在刚体运动  \(\sigma\)  下的像.
+\end{theorem}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第02章 曲线论/pages/page-0062.tex；原定理 5.3。
+\begin{theorem}{曲线论基本定理}{dg-2-thm-5-3}
+设  \(\kappa(s), \tau(s)\)  是在区间  \([a, b]\)  上两个任意给定的连续可微函数，并且  \(\kappa(s) > 0\) ，则在空间  \(E^{3}\)  中存在正则参数曲线  \(\boldsymbol{r} = \boldsymbol{r}(s), a \leqslant s \leqslant b\) ，以 s 为弧长参数，以给定的函数  \(\kappa(s), \tau(s)\)  为它的曲率和挠率，且这样的曲线在空间  \(E^{3}\)  中是完全确定的，其差异至多为曲线在空间中的位置不同.
+\end{theorem}
+
+% 来源：第二章，page-0065.tex。
+\begin{definition}{曲线的内在方程}{intrinsic-equations}
+把曲线的曲率与挠率表示为弧长的函数
+\[
+\kappa=\kappa(s)>0,\qquad\tau=\tau(s),
+\]
+称为曲线的内在方程，或自然方程。
+\end{definition}
+
+\section{曲线参数方程在一点的标准展开}
+
+% 来源：第二章，page-0067.tex、page-0068.tex。
+\begin{proposition}{曲线在一点的标准展开}{standard-expansion}
+设 $s$ 为弧长参数，在 $s=0$ 处取 Frenet 标架为坐标标架。
+记 $\kappa_0=\kappa(0)$、$\kappa_0'=\kappa'(0)$、$\tau_0=\tau(0)$，则
+\[
+\begin{cases}
+x(s)=s-\dfrac{\kappa_0^2}{6}s^3+o(s^3),\\[4pt]
+y(s)=\dfrac{\kappa_0}{2}s^2+\dfrac{\kappa_0'}{6}s^3+o(s^3),\\[4pt]
+z(s)=\dfrac{\kappa_0\tau_0}{6}s^3+o(s^3).
+\end{cases}
+\]
+\end{proposition}
+
+% 来源：第二章，page-0068.tex。
+\begin{definition}{曲线在一点的近似曲线}{approximate-curve}
+在上述坐标标架下，当 $\kappa_0\tau_0\neq0$ 时，曲线
+\[
+\tilde{\vect r}(s)=\left(s,\frac{\kappa_0}{2}s^2,
+\frac{\kappa_0\tau_0}{6}s^3\right)
+\]
+称为原曲线在 $s=0$ 处的近似曲线。
+\end{definition}
+
+% 来源：第二章，page-0069.tex。
+\begin{definition}{曲线的切触阶}{contact-order}
+设两曲线 $C_1,C_2$ 相交于 $p_0$。在两曲线上取距 $p_0$ 的有向弧长均为
+$\Delta s$ 的点 $p_1,p_2$。若有正整数 $n$，使得
+\[
+\lim_{\Delta s\to0}\frac{|p_1p_2|}{(\Delta s)^n}=0,\qquad
+\lim_{\Delta s\to0}\frac{|p_1p_2|}{(\Delta s)^{n+1}}\neq0,
+\]
+则称两曲线在 $p_0$ 处有 $n$ 阶切触。
+\end{definition}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第02章 曲线论/pages/page-0069.tex；原定理 6.1。
+\begin{theorem}{切触阶的导数判别}{dg-2-thm-6-1}
+设曲线 \(r_1(s)\) 和 \(r_2(s)\) 都以 \(s\) 为它们的弧长参数, 且 \(r_1(0) = r_2(0)\), 则它们在 \(s = 0\) 处有 \(n\) 阶切触的充分必要条件是\par
+
+\begin{equation*}
+\boldsymbol {r} _ {1} ^ {(i)} (0) = \boldsymbol {r} _ {2} ^ {(i)} (0), \quad \forall 1 \leqslant i \leqslant n; \quad \boldsymbol {r} _ {1} ^ {(n + 1)} (0) \neq \boldsymbol {r} _ {2} ^ {(n + 1)} (0).
+\end{equation*}
+\end{theorem}
+
+% 来源：第二章，page-0070.tex，定理 6.1 后的推论。
+\begin{corollary}{二阶以上切触}{second-order-contact}
+两条相交的正则曲线在交点处有二阶以上切触的充分必要条件是，
+两条曲线相切、有相同的有向密切平面和相同的曲率。
+\end{corollary}
+
+% 来源：第二章，page-0070.tex、page-0071.tex。
+\begin{definition}{曲率圆、曲率中心与曲率半径}{osculating-circle}
+在 $\kappa(s_0)>0$ 的点，位于密切平面内、以
+\[
+\vect r(s_0)+\frac{\vect\beta(s_0)}{\kappa(s_0)}
+\]
+为中心、以 $1/\kappa(s_0)$ 为半径的圆称为曲率圆。
+其圆心称为曲率中心，半径称为曲率半径。
+\end{definition}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第02章 曲线论/pages/page-0072.tex；原定理 6.2。
+\begin{theorem}{密切球面的球心与半径}{dg-2-thm-6-2}
+C: r = r(s) 是曲率和挠率都不为零的正则参数曲线, s 是弧长参数, 则在 s 处与曲线 C 有 3 阶以上切触的球面  \(\Sigma\)  的球心是\par
+
+\begin{equation*}
+\boldsymbol {r} (s) + \frac {1}{\kappa (s)} \beta (s) + \frac {1}{\tau (s)} \left(\frac {1}{\kappa (s)}\right) ^ {\prime} \gamma (s),
+\end{equation*}
+
+半径是\par
+
+\begin{equation*}
+\sqrt {\left(\frac {1}{\kappa (s)}\right) ^ {2} + \left(\frac {1}{\tau (s)} \left(\frac {1}{\kappa (s)}\right) ^ {\prime}\right) ^ {2}}.
+\end{equation*}
+\end{theorem}
+
+% 来源：第二章，page-0072.tex。
+\begin{definition}{密切球面与曲率轴}{osculating-sphere}
+与曲线在一点具有三阶以上切触的球面称为密切球面。
+经过曲率中心、垂直于密切平面的直线称为曲率轴，其方程为
+\[
+\vect X=\vect r(s)+\frac1{\kappa(s)}\vect\beta(s)+\lambda\vect\gamma(s).
+\]
+\end{definition}
+
+\section{存在对应关系的曲线偶}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第02章 曲线论/pages/page-0074.tex；原定义 7.1。
+\begin{definition}{Bertrand 曲线偶}{dg-2-def-7-1}
+如果在互不重合的曲线  \(C_{1}\)  和  \(C_{2}\)  之间存在一个对应，使得它们在每一对对应点有公共的主法线，则称这两条曲线为 Bertrand 曲线偶，其中每一条曲线称为另外一条曲线的侣线，或共轭曲线.
+\end{definition}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第02章 曲线论/pages/page-0074.tex；原定理 7.1。
+\begin{theorem}{Bertrand 曲线偶的距离与夹角}{dg-2-thm-7-1}
+设曲线  \(C_{1}\)  和  \(C_{2}\)  是 Bertrand 曲线偶, 则  \(C_{1}\)  和  \(C_{2}\)  的对应点之间的距离是常数, 并且  \(C_{1}\)  和  \(C_{2}\)  在对应点的切线成定角.
+\end{theorem}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第02章 曲线论/pages/page-0075.tex；原定理 7.2。
+\begin{theorem}{Bertrand 曲线的判别}{dg-2-thm-7-2}
+设正则参数曲线 C 的曲率  \(\kappa\)  和挠率  \(\tau\)  都不是零, 则存在另一条正则参数曲线  \(C_{1}\) , 使得曲线  \(C_{1}\)  和 C 成为 Bertrand 曲线偶的充分必要条件是, 存在常数  \(\lambda \neq 0\)  和  \(\mu\) , 使得\par
+
+\[
+\lambda \kappa + \mu \tau = 1.
+\]
+\end{theorem}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第02章 曲线论/pages/page-0077.tex；原定义 7.2。
+\begin{definition}{渐伸线与渐缩线}{dg-2-def-7-2}
+如果在曲线  \(C_{1}\)  和  \(C_{2}\)  之间存在一个对应, 使得曲线  \(C_{1}\)  在任意一点的切线恰好是曲线  \(C_{2}\)  在对应点的法线, 则称曲线  \(C_{2}\)  是  \(C_{1}\)  的渐伸线, 同时称曲线  \(C_{1}\)  是  \(C_{2}\)  的渐缩线 .
+\end{definition}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第02章 曲线论/pages/page-0077.tex；原定理 7.3。
+\begin{theorem}{渐伸线的参数方程}{dg-2-thm-7-3}
+设正则参数曲线 \(C\) 的参数方程是 \(\boldsymbol{r}(s), s\) 是弧长参数，则 \(C\) 的渐伸线的参数方程是\par
+
+\begin{equation*}
+\boldsymbol {r} = \boldsymbol {r} (s) + (c - s) \boldsymbol {\alpha} (s),
+\end{equation*}
+
+其中 c 是任意的常数.
+\end{theorem}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第02章 曲线论/pages/page-0078.tex；原定理 7.4。
+\begin{theorem}{渐缩线的参数方程}{dg-2-thm-7-4}
+设正则参数曲线 \(C\) 的参数方程是 \(\boldsymbol{r}(s), s\) 是弧长参数, 则 \(C\) 的渐缩线的参数方程是\par
+
+\begin{equation*}
+\boldsymbol {r} = \boldsymbol {r} (s) + \frac {1}{\kappa (s)} \boldsymbol {\beta} (s) - \frac {1}{\kappa (s)} \left(\tan \int \tau (s) \mathrm{d} s\right) \boldsymbol {\gamma} (s).
+\end{equation*}
+\end{theorem}
+
+\section{平面曲线}
+
+% 来源：第二章，page-0080.tex、page-0081.tex。
+\begin{definition}{平面曲线的 Frenet 标架与相对曲率}{plane-frenet}
+设有向平面内的曲线为 $\vect r(s)=(x(s),y(s))$，$s$ 是弧长参数。定义
+\[
+\vect\alpha(s)=(x'(s),y'(s)),\qquad
+\vect\beta(s)=(-y'(s),x'(s)).
+\]
+$\{\vect r(s);\vect\alpha(s),\vect\beta(s)\}$ 称为平面曲线的 Frenet 标架。
+相对曲率定义为
+\[
+\kappa_r(s)=\vect\alpha'(s)\cdot\vect\beta(s)
+=x'(s)y''(s)-x''(s)y'(s),\qquad\kappa(s)=|\kappa_r(s)|.
+\]
+\end{definition}
+
+% 来源：第二章，page-0081.tex、page-0082.tex。
+\begin{proposition}{平面曲线的 Frenet 公式与方向角}{plane-formulas}
+\[
+\vect r'=\vect\alpha,\qquad
+\vect\alpha'=\kappa_r\vect\beta,\qquad
+\vect\beta'=-\kappa_r\vect\alpha.
+\]
+若 $\theta(s)$ 为单位切向量与 $x$ 轴正向所成方向角的连续分支，则
+\[
+\vect\alpha=(\cos\theta,\sin\theta),\qquad
+\vect\beta=(-\sin\theta,\cos\theta),\qquad
+\kappa_r(s)=\frac{\dd\theta}{\dd s}.
+\]
+\end{proposition}
+
+% 来源：第二章，page-0082.tex、page-0083.tex。
+\begin{proposition}{平面曲线的相对曲率与重建公式}{plane-reconstruction}
+对任意正则参数 $t$，
+\[
+\kappa_r(t)=\frac{x'(t)y''(t)-x''(t)y'(t)}
+{\bigl(x'(t)^2+y'(t)^2\bigr)^{3/2}}.
+\]
+给定相对曲率 $\kappa_r(s)$ 后，
+\[
+\begin{aligned}
+\theta(s)&=\theta(s_0)+\int_{s_0}^s\kappa_r(u)\dd u,\\
+x(s)&=x(s_0)+\int_{s_0}^s\cos\theta(u)\dd u,\\
+y(s)&=y(s_0)+\int_{s_0}^s\sin\theta(u)\dd u.
+\end{aligned}
+\]
+\end{proposition}
+
+% 来源：第二章，page-0081.tex。
+\begin{proposition}{平面曲线的曲率中心与渐缩线}{plane-evolute}
+在 $\kappa_r(s)\neq0$ 的点，曲率中心轨迹（渐缩线）的参数方程为
+\[
+\vect r_1(s)=\vect r(s)+\frac{\vect\beta(s)}{\kappa_r(s)}.
+\]
+\end{proposition}
+
+% 来源：第二章，page-0083.tex、page-0084.tex。
+\begin{definition}{光滑闭曲线、分段光滑闭曲线与简单闭曲线}{closed-curve}
+若 $\vect r(s)$ 在 $a\leq s\leq b$ 上光滑，且
+\[
+\vect r(b)=\vect r(a),\qquad
+\vect r'(b)=\vect r'(a),\qquad
+\vect r''(b)=\vect r''(a),
+\]
+则称其为光滑闭曲线。由若干段光滑曲线首尾相接而成、满足
+$\vect r(b)=\vect r(a)$ 的曲线称为分段光滑闭曲线。
+若闭曲线还满足
+\[
+\vect r(s_1)\neq\vect r(s_2),\qquad a\leq s_1<s_2<b,
+\]
+则称其为简单闭曲线。
+\end{definition}
+
+% 来源：第二章，page-0083.tex、page-0084.tex。
+\begin{definition}{旋转指标}{rotation-index}
+设 $C$ 是连续可微的正则闭曲线，$\theta(s)$ 为其方向角的连续分支。
+旋转指标定义为
+\[
+i(C)=\frac{\theta(b)-\theta(a)}{2\pi}\in\mathbb Z.
+\]
+对于光滑闭曲线，
+\[
+i(C)=\frac1{2\pi}\int_a^b\kappa_r(s)\dd s.
+\]
+\end{definition}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第02章 曲线论/pages/page-0084.tex；原定理 8.1。
+\begin{theorem}{简单闭曲线的旋转指标}{dg-2-thm-8-1}
+若 \(C\) 是平面 \(E^2\) 上一条连续可微的简单闭曲线, 则它的旋转指标 \(i(C) = \pm 1\).
+\end{theorem}
+
+% 来源：第二章，page-0084.tex。
+\begin{proposition}{分段光滑简单闭曲线的总转角}{piecewise-turning}
+设 $\theta_i$ 为各角点处的有向外角，$-\pi<\theta_i<\pi$，则
+\[
+\theta(b)-\theta(a)=\int_a^b\kappa_r(s)\dd s+\sum_i\theta_i.
+\]
+分段连续可微简单闭曲线的旋转指标仍为 $\pm1$。
+\end{proposition}

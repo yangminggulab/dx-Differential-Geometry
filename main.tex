@@ -1,0 +1,27 @@
+% !TEX program = xelatex
+% !TEX output = 微分几何前三章.pdf
+\PassOptionsToPackage{fontset=fandol}{ctex}
+\documentclass[lang=cn,10pt]{elegantbook}
+
+\title{微分几何}
+\subtitle{前三章：定义与定理}
+\cover{images/cover.png}
+\date{2026年10月5日}
+\setcounter{tocdepth}{1}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\GL}{GL}
+\hypersetup{pdftitle={微分几何：前三章定义与定理}}
+
+\begin{document}
+\maketitle
+\frontmatter
+\tableofcontents
+\mainmatter
+\input{第一章.tex}
+\input{第二章.tex}
+\input{第三章.tex}
+\end{document}

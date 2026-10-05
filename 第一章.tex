@@ -1,0 +1,203 @@
+\chapter{预备知识}
+\section{三维欧氏空间中的标架}
+
+% 来源：第一章，page-0020.tex、page-0021.tex。
+\begin{definition}{三维欧氏空间与有向线段}{euclidean-space}
+三维欧氏空间 $E^3$ 是一个非空集合，其元素称为点。
+任意两个不同的点唯一地决定一条直线；不共线的三个不同的点唯一地决定一个平面；
+空间中存在四个不共面的点。过直线外一点可以且只可以作一条直线与已知直线平行。
+线段 $AB$ 指定 $A$ 为起点、$B$ 为终点后，称为有向线段，记为 $\overrightarrow{AB}$。
+\end{definition}
+
+% 来源：第一章，page-0021.tex。
+\begin{definition}{向量、零向量与向量运算}{vector}
+所有相等的有向线段的集合称为一个向量。起点和终点相同的有向线段代表零向量。
+若 $\vect a=\overrightarrow{AB}$、$\vect b=\overrightarrow{BC}$，则
+\[
+\vect a+\vect b=\overrightarrow{AC},\qquad
+\vect a+(-\vect a)=\vect0.
+\]
+向量 $\vect a$ 的长度 $|\vect a|$ 是代表它的有向线段的长度。
+实数 $c$ 与 $\vect a$ 的乘积 $c\vect a$ 的长度是 $|c|\,|\vect a|$；
+$c>0$ 时与 $\vect a$ 同向，$c<0$ 时与 $\vect a$ 反向，$c=0$ 时为零向量。
+\end{definition}
+
+% 来源：第一章，page-0021.tex 至 page-0023.tex。
+\begin{proposition}{向量的运算法则}{vector-algebra}
+对任意向量 $\vect a,\vect b,\vect c$ 和实数 $\lambda,\mu$，
+\[
+\begin{aligned}
+\vect a+\vect b&=\vect b+\vect a,&
+(\vect a+\vect b)+\vect c&=\vect a+(\vect b+\vect c),\\
+\lambda(\vect a+\vect b)&=\lambda\vect a+\lambda\vect b,&
+(\lambda+\mu)\vect a&=\lambda\vect a+\mu\vect a,\\
+\lambda(\mu\vect a)&=(\lambda\mu)\vect a,&1\vect a&=\vect a.
+\end{aligned}
+\]
+\end{proposition}
+
+% 来源：第一章，page-0022.tex、page-0030.tex、page-0031.tex。
+\begin{definition}{内积、向量积与混合积}{vector-products}
+设 $\vect a=(a_1,a_2,a_3)$、$\vect b=(b_1,b_2,b_3)$、$\vect c=(c_1,c_2,c_3)$。
+内积（点乘、数量积）、向量积（叉乘）及混合积分别为
+\[
+\vect a\cdot\vect b=\sum_{i=1}^3a_ib_i
+=|\vect a|\,|\vect b|\cos\angle(\vect a,\vect b),
+\]
+\[
+\vect a\times\vect b=
+(a_2b_3-a_3b_2,\ a_3b_1-a_1b_3,\ a_1b_2-a_2b_1),
+\]
+\[
+(\vect a,\vect b,\vect c)=(\vect a\times\vect b)\cdot\vect c
+=\begin{vmatrix}a_1&a_2&a_3\\b_1&b_2&b_3\\c_1&c_2&c_3\end{vmatrix}.
+\]
+\end{definition}
+
+% 来源：第一章，page-0022.tex、page-0023.tex、page-0030.tex。
+\begin{proposition}{内积与向量积的性质}{product-properties}
+\[
+\begin{gathered}
+\vect a\cdot\vect b=\vect b\cdot\vect a,\qquad
+\vect a\times\vect b=-\vect b\times\vect a,\\
+\vect a\cdot(\vect b+\vect c)=\vect a\cdot\vect b+\vect a\cdot\vect c,\\
+\vect a\times(\vect b+\vect c)=\vect a\times\vect b+\vect a\times\vect c,\\
+(\lambda\vect a)\cdot\vect b=\lambda(\vect a\cdot\vect b),\qquad
+(\lambda\vect a)\times\vect b=\lambda(\vect a\times\vect b),\\
+|\vect a|^2=\vect a\cdot\vect a\geq0,\qquad
+\vect a\cdot\vect a=0\iff\vect a=\vect0,\\
+\vect a\times\vect b\perp\vect a,\qquad
+\vect a\times\vect b\perp\vect b,\\
+|\vect a\times\vect b|=|\vect a|\,|\vect b|\sin\angle(\vect a,\vect b).
+\end{gathered}
+\]
+对于非零向量 $\vect a,\vect b$，
+\[
+\vect a\perp\vect b\iff\vect a\cdot\vect b=0,\qquad
+\vect a\parallel\vect b\iff\vect a\times\vect b=\vect0.
+\]
+\end{proposition}
+
+% 来源：第一章，page-0023.tex。
+\begin{definition}{标架与坐标}{frame}
+空间中一点 $O$ 和三个不共面的向量 $\vect e_1,\vect e_2,\vect e_3$
+组成的图形 $\{O;\vect e_1,\vect e_2,\vect e_3\}$ 称为一个标架，$O$ 称为原点。
+若
+\[
+\overrightarrow{Op}=x\vect e_1+y\vect e_2+z\vect e_3,
+\]
+则 $(x,y,z)$ 称为点 $p$ 关于该标架的坐标。
+\end{definition}
+
+% 来源：第一章，page-0023.tex 至 page-0026.tex。
+\begin{definition}{右手单位正交标架}{orthonormal-frame}
+满足
+\[
+\vect e_i\cdot\vect e_j=\delta_{ij},\qquad
+\vect e_1\times\vect e_2=\vect e_3
+\]
+的标架称为右手单位正交标架，本书简称正交标架。
+由正交标架给出的坐标系称为笛卡儿直角坐标系。
+记
+\[
+\SO(3)=\{A\in\R^{3\times3}:AA^{\mathrm T}=I_3,\ \det A=1\}.
+\]
+全体正交标架的集合可表示为 $E^3\times\SO(3)$。
+\end{definition}
+
+% 来源：第一章，page-0024.tex。
+\begin{proposition}{两点间的距离}{distance}
+设 $A=(x_1,y_1,z_1)$、$B=(x_2,y_2,z_2)$，则
+\[
+|AB|=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2}.
+\]
+对于任意三点 $A,B,C$，有三角形不等式 $|AB|+|BC|\geq|AC|$。
+\end{proposition}
+
+% 来源：第一章，page-0027.tex 至 page-0029.tex。
+\begin{definition}{刚体运动与等距变换}{rigid-motion}
+保持任意两点间距离不变的空间变换称为等距变换。
+保持右手系不变的等距变换称为刚体运动。
+在笛卡儿直角坐标系下，刚体运动可表示为
+\[
+(\tilde x,\tilde y,\tilde z)=\vect a+(x,y,z)A,\qquad
+A\in\SO(3),\quad\vect a\in\R^3.
+\]
+一般等距变换的矩阵 $A$ 满足 $AA^{\mathrm T}=I_3$，$\det A=\pm1$。
+\end{definition}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第01章 预备知识/pages/page-0028.tex；原定理 1.1。
+\begin{theorem}{刚体运动与正交标架}{dg-1-thm-1-1}
+\(E^{3}\)  中的刚体运动把一个正交标架变成一个正交标架；反过来，对于  \(E^{3}\)  中的任意两个正交标架，必有  \(E^{3}\)  的一个刚体运动把其中一个正交标架变成另一个正交标架.
+\end{theorem}
+
+% 来源：第一章，page-0029.tex、page-0030.tex。
+\begin{definition}{仿射标架与度量系数}{affine-frame}
+空间中一点 $p$ 和三个不共面的向量 $\vect e_1,\vect e_2,\vect e_3$
+组成的标架 $\{p;\vect e_1,\vect e_2,\vect e_3\}$ 称为仿射标架。
+其度量系数为
+\[
+g_{ij}=\vect e_i\cdot\vect e_j,\qquad1\leq i,j\leq3.
+\]
+全体仿射标架的集合可表示为 $E^3\times\GL(3)$，其中 $\GL(3)$ 是全体非退化的 $3\times3$ 实矩阵的集合。
+\end{definition}
+
+% 来源：第一章，page-0030.tex。
+\begin{proposition}{仿射标架与刚体运动}{affine-rigid}
+刚体运动保持仿射标架的度量系数和定向不变。
+对于任意两个具有相同度量系数、成右手系的仿射标架，存在一个刚体运动把其中一个变为另一个。
+\end{proposition}
+
+\section{向量函数}
+
+% 来源：第一章，page-0030.tex、page-0031.tex。
+\begin{definition}{向量函数及其连续性、可微性}{vector-function}
+从一个定义域到 $\R^3$ 的映射称为向量函数，记为
+\[
+\vect r(t)=(x(t),y(t),z(t)),\qquad a\leq t\leq b.
+\]
+若三个分量函数都连续，则称 $\vect r$ 连续；若它们都连续可微，则称 $\vect r$ 连续可微。
+\end{definition}
+
+% 来源：第一章，page-0031.tex。
+\begin{definition}{向量函数的导数与积分}{vector-calculus}
+\[
+\vect r'(t_0)=\lim_{\Delta t\to0}
+\frac{\vect r(t_0+\Delta t)-\vect r(t_0)}{\Delta t}
+=(x'(t_0),y'(t_0),z'(t_0)),
+\]
+\[
+\int_a^b\vect r(t)\dd t=
+\left(\int_a^b x(t)\dd t,\ \int_a^b y(t)\dd t,\ \int_a^b z(t)\dd t\right).
+\]
+\end{definition}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第01章 预备知识/pages/page-0032.tex；原定理 2.1。
+\begin{theorem}{向量乘积的求导法则}{dg-1-thm-2-1}
+假定  \(\boldsymbol{a}(t), \boldsymbol{b}(t), \boldsymbol{c}(t)\)  是三个可微的向量函数，则它们的内积、向量积和混合积的导数有下面的公式:\par
+
+(1) \((\boldsymbol{a}(t)\cdot \boldsymbol{b}(t))' = \boldsymbol{a}'(t)\cdot \boldsymbol{b}(t) + \boldsymbol{a}(t)\cdot \boldsymbol{b}'(t);\)\par
+
+(2) \((\boldsymbol{a}(t)\times \boldsymbol {b}(t))^{\prime} = \boldsymbol{a}^{\prime}(t)\times \boldsymbol {b}(t) + \boldsymbol {a}(t)\times \boldsymbol{b}^{\prime}(t);\)\par
+
+\[
+\begin{array}{r l} (\boldsymbol {a} (t), \boldsymbol {b} (t), \boldsymbol {c} (t)) ^ {\prime} & = (\boldsymbol {a} ^ {\prime} (t), \boldsymbol {b} (t), \boldsymbol {c} (t)) + (\boldsymbol {a} (t), \boldsymbol {b} ^ {\prime} (t), \boldsymbol {c} (t)) \\ & \quad + (\boldsymbol {a} (t), \boldsymbol {b} (t), \boldsymbol {c} ^ {\prime} (t)). \end{array}
+\]
+\end{theorem}
+
+% 来源：教材转换成果/微分几何/LaTeX源码/章节/第01章 预备知识/pages/page-0032.tex；原定理 2.2。
+\begin{theorem}{向量函数长度、方向与共面性的判别}{dg-1-thm-2-2}
+设 \(a(t)\) 是一个处处非零的连续可微的向量函数, 则\par
+
+(1) 向量函数  \(\boldsymbol{a}(t)\)  的长度是常数当且仅当  \(\boldsymbol{a}'(t) \cdot \boldsymbol{a}(t) \equiv 0\) .\par
+
+(2) 向量函数  \(\boldsymbol{a}(t)\)  的方向不变当且仅当  \(\boldsymbol{a}'(t) \times \boldsymbol{a}(t) \equiv \boldsymbol{0}\) .\par
+
+(3) 如果向量函数  \(\boldsymbol{a}(t)\)  与某一个固定的方向垂直, 那么\par
+
+\[
+(\boldsymbol {a} (t), \boldsymbol {a} ^ {\prime} (t), \boldsymbol {a} ^ {\prime \prime} (t)) \equiv 0.
+\]
+
+反过来, 如果上式成立, 并且处处有  \(\boldsymbol{a}^{\prime}(t) \times \boldsymbol{a}(t) \neq \boldsymbol{0}\) , 那么向量函数  \(\boldsymbol{a}(t)\)  必定与某一个固定的方向垂直.
+\end{theorem}
