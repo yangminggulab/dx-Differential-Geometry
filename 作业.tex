@@ -1,21 +1,379 @@
 % 微分几何作业汇总；由 main.tex 统一载入。
-% 所有作业始终保存在本文件，不按次数拆成其他 tex 文件。
-% 同一章内，每次作业单独使用一个 \section，按时间顺序追加。
-% 进入下一章时，新建该章的 \chapter，再继续逐次添加 \section。
-% 题目和解答放在相应作业的 section 内。
-%
-% 以下为结构示例；收到具体作业后再启用，当前不生成空白作业页。
-%
-% \chapter{预备知识作业}
-% \section{第一次作业}
-% 题目与解答
-% \section{第二次作业}
-% 题目与解答
-%
-% \chapter{曲线论作业}
-% \section{第三次作业}
-% 题目与解答
-%
-% \chapter{曲面的第一基本形式作业}
-% \section{第四次作业}
-% 题目与解答
+% 每次作业为一个 section；同一教材章内依次追加。
+% 进入下一章时使用新的 chapter* 分组，并重置 section 计数器。
+% 来源：第一次课作业（2026-09-27）及第二周作业的已有 LaTeX 原稿。
+% 两次作业均属于教材第二章，保留原题顺序、完整题干和解答。
+\begingroup
+\chapter*{第二章作业：曲线论}
+\addcontentsline{toc}{chapter}{第二章作业：曲线论}
+\markboth{第二章作业：曲线论}{第二章作业：曲线论}
+\setcounter{section}{0}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thechapter}{2}
+\renewcommand{\theHsection}{homework.curves.\arabic{section}}
+
+\section{第一次作业（2026年9月27日）}
+\label{hw:curves:first}
+\begin{homework}[教材第 28 页，习题 2.1 第 4 题]
+\par\smallskip
+求曲线
+\[
+\begin{cases}
+x^2+y^2+z^2=1, & z\geq0,\\
+x^2+y^2=x
+\end{cases}
+\]
+的参数方程。
+\end{homework}
+
+\begin{solution}
+由第二个方程 $x^2+y^2=x$ 代入第一个方程，得到
+\[
+x+z^2=1,
+\qquad\text{即}\qquad
+x=1-z^2.
+\]
+再代回 $x^2+y^2=x$：
+\begin{align*}
+y^2
+&=x-x^2\\
+&=(1-z^2)-(1-z^2)^2\\
+&=z^2(1-z^2).
+\end{align*}
+由于 $z\geq0$，令
+\[
+z=\sin u,\qquad 0\leq u\leq\frac{\pi}{2}.
+\]
+于是
+\[
+x=\cos^2u,\qquad
+y=\pm\sin u\cos u.
+\]
+因此曲线由两支参数曲线组成：
+\[
+\boxed{
+\bm r_\pm(u)
+=\bigl(\cos^2u,\ \pm\sin u\cos u,\ \sin u\bigr),
+\quad
+0\leq u\leq\frac{\pi}{2}.
+}
+\]
+
+也可以用一个参数一次写完整条曲线：
+\[
+\boxed{
+\bm r(t)
+=\left(
+\cos^2\frac t2,\,
+\sin\frac t2\cos\frac t2,\,
+\sin\frac t2
+\right),
+\quad 0\leq t\leq2\pi.
+}
+\]
+因为 $0\leq t/2\leq\pi$，第三个坐标始终非负。直接验证：
+\[
+x^2+y^2
+=\cos^4\frac t2+\sin^2\frac t2\cos^2\frac t2
+=\cos^2\frac t2=x,
+\]
+并且
+\[
+x^2+y^2+z^2=x+z^2
+=\cos^2\frac t2+\sin^2\frac t2=1.
+\]
+故上述参数方程满足原方程组，并覆盖两支交线。
+\end{solution}
+
+\begin{dxtips}[先消元，再检查覆盖范围]\label{hw:curves:tip1}
+先用 $x^2+y^2=x$ 消去一个方程，得到 $x=1-z^2$。取参数时要同时覆盖 $y$ 的正、负两支，并保证 $z\geq0$；最后代回原方程组检查。
+\end{dxtips}
+
+\clearpage
+
+\begin{homework}[教材第 30 页，习题 2.2 第 1 题（5）]
+\par\smallskip
+求曲线
+\[
+y=\frac{x^2}{2a},\qquad z=\frac{x^3}{6a^2}
+\]
+在原点 $O(0,0,0)$ 和点 $p(x_0,y_0,z_0)$ 之间的弧长。
+\end{homework}
+
+\begin{solution}
+以 $x$ 为参数（$a\neq0$），曲线可写成
+\[
+\bm r(x)
+=\left(x,\frac{x^2}{2a},\frac{x^3}{6a^2}\right).
+\]
+因此
+\[
+\bm r'(x)
+=\left(1,\frac{x}{a},\frac{x^2}{2a^2}\right),
+\]
+从而
+\begin{align*}
+\lVert\bm r'(x)\rVert
+&=\sqrt{1+\frac{x^2}{a^2}+\frac{x^4}{4a^4}}\\
+&=\sqrt{\left(1+\frac{x^2}{2a^2}\right)^2}
+=1+\frac{x^2}{2a^2}.
+\end{align*}
+两点之间的弧长为
+\begin{align*}
+s
+&=\left|\int_0^{x_0}\left(1+\frac{x^2}{2a^2}\right)\,\mathrm dx\right|\\
+&=\boxed{\left|x_0+\frac{x_0^3}{6a^2}\right|}.
+\end{align*}
+由于 $p$ 在曲线上，有
+\[
+y_0=\frac{x_0^2}{2a},\qquad
+z_0=\frac{x_0^3}{6a^2},
+\]
+所以也可写成
+\[
+\boxed{s=|x_0+z_0|}.
+\]
+特别地，若 $x_0>0$，则 $s=x_0+x_0^3/(6a^2)=x_0+z_0$。
+\end{solution}
+
+\begin{dxtips}[弧长非负，先化简速度]\label{hw:curves:tip2}
+根号下是完全平方，速度可化成 $1+x^2/(2a^2)$。若 $x_0<0$，积分上限小于下限，所以两点间的弧长要对积分取绝对值。
+\end{dxtips}
+
+\clearpage
+
+\begin{homework}[教材第 38 页，习题 2.3 第 1 题（3）]
+\par\smallskip
+求曲线
+\[
+\bm r(t)
+=\bigl(a(t-\sin t),\ a(1-\cos t),\ bt\bigr),
+\qquad a>0
+\]
+的曲率。
+\end{homework}
+
+\begin{solution}
+由曲率公式
+\[
+\kappa(t)
+=\frac{\lVert\bm r'(t)\times\bm r''(t)\rVert}
+{\lVert\bm r'(t)\rVert^3},
+\]
+先计算
+\[
+\bm r'(t)
+=\bigl(a(1-\cos t),\ a\sin t,\ b\bigr),
+\qquad
+\bm r''(t)
+=\bigl(a\sin t,\ a\cos t,\ 0\bigr).
+\]
+于是
+\begin{align*}
+\lVert\bm r'(t)\rVert^2
+&=a^2(1-\cos t)^2+a^2\sin^2t+b^2\\
+&=b^2+2a^2(1-\cos t),
+\end{align*}
+并且
+\begin{align*}
+\bm r'(t)\times\bm r''(t)
+&=\bigl(-ab\cos t,\ ab\sin t,\ a^2(\cos t-1)\bigr),\\
+\lVert\bm r'(t)\times\bm r''(t)\rVert
+&=a\sqrt{b^2+a^2(1-\cos t)^2}.
+\end{align*}
+故曲率为
+\[
+\boxed{
+\kappa(t)
+=\frac{a\sqrt{b^2+a^2(1-\cos t)^2}}
+{\bigl[b^2+2a^2(1-\cos t)\bigr]^{3/2}}
+}.
+\]
+等价地，使用 $1-\cos t=2\sin^2(t/2)$ 可写成
+\[
+\boxed{
+\kappa(t)
+=\frac{a\sqrt{b^2+4a^2\sin^4(t/2)}}
+{\bigl[b^2+4a^2\sin^2(t/2)\bigr]^{3/2}}
+}.
+\]
+当 $b\neq0$ 时，上式对所有 $t$ 成立；当 $b=0$ 时，$t=2k\pi$
+（$k\in\mathbb Z$）处 $\bm r'(t)=\bm0$，曲率在这些点无定义。
+\end{solution}
+
+\begin{dxtips}[曲率公式先检查正则性]\label{hw:curves:tip3}
+一般参数使用 $\kappa=\lVert\bm r^{\prime}\times\bm r^{\prime\prime}\rVert/\lVert\bm r^{\prime}\rVert^3$。当 $b=0$ 时必须排除 $t=2k\pi$，这些点的速度为零。
+\end{dxtips}
+
+
+\clearpage
+\section{第二次作业}
+\label{hw:curves:second}
+\begin{homework}[教材第45页，习题2.4，第7题]
+\par\smallskip
+求曲线
+\[
+\bm r(t)=\left(\frac{(1+t)^{3/2}}3,\frac{(1-t)^{3/2}}3,
+\frac{t}{\sqrt2}\right),\qquad -1<t<1
+\]
+的曲率、挠率和 Frenet 标架场。
+\end{homework}
+
+\begin{solution}
+先求导：
+\[
+\bm r'(t)=\left(\frac{\sqrt{1+t}}2,-\frac{\sqrt{1-t}}2,\frac1{\sqrt2}\right),
+\qquad
+\bm r''(t)=\left(\frac1{4\sqrt{1+t}},\frac1{4\sqrt{1-t}},0\right).
+\]
+因为
+\[
+\lVert\bm r'(t)\rVert^2=\frac{1+t}4+\frac{1-t}4+\frac12=1,
+\]
+所以 $\mathrm ds/\mathrm dt=1$，即 $s=t+C$。因此
+\[
+\kappa(t)=\lVert\bm r''(t)\rVert
+=\sqrt{\frac1{16(1+t)}+\frac1{16(1-t)}}
+=\boxed{\frac1{2\sqrt2\sqrt{1-t^2}}}.
+\]
+采用教材记号，单位切向量、单位主法向量和单位副法向量分别为
+\begin{align*}
+\bm\alpha(t)&=\bm r'(t)
+=\left(\frac{\sqrt{1+t}}2,-\frac{\sqrt{1-t}}2,\frac1{\sqrt2}\right),\\[3pt]
+\bm\beta(t)&=\frac{\bm r''(t)}{\kappa(t)}
+=\left(\frac{\sqrt{1-t}}{\sqrt2},\frac{\sqrt{1+t}}{\sqrt2},0\right),\\[3pt]
+\bm\gamma(t)&=\bm\alpha(t)\times\bm\beta(t)
+=\left(-\frac{\sqrt{1+t}}2,\frac{\sqrt{1-t}}2,\frac1{\sqrt2}\right).
+\end{align*}
+再由 Frenet 公式 $\mathrm d\bm\gamma/\mathrm ds=-\tau\bm\beta$，注意到
+\[
+\frac{\mathrm d\bm\gamma}{\mathrm ds}
+=\bm\gamma'(t)
+=\left(-\frac1{4\sqrt{1+t}},-\frac1{4\sqrt{1-t}},0\right)
+=-\kappa(t)\bm\beta(t),
+\]
+得到
+\[
+\boxed{\tau(t)=\kappa(t)=\frac1{2\sqrt2\sqrt{1-t^2}}},\qquad -1<t<1.
+\]
+所求 Frenet 标架场为 $\boxed{\{\bm r(t);\bm\alpha(t),\bm\beta(t),\bm\gamma(t)\}}$，
+其中三个单位向量如上，且 $\bm\alpha\times\bm\beta=\bm\gamma$。
+\end{solution}
+
+\begin{dxtips}[先检查参数，再求标架]\label{hw:curves:tip4}
+$\lVert\bm r'(t)\rVert=1$，所以 $t$ 本身就是弧长参数，允许直接用
+$\kappa=\lVert\bm r''\rVert$。由 $\bm\beta=\bm r''/\kappa$、
+$\bm\gamma=\bm\alpha\times\bm\beta$ 求标架，再用
+$\bm\gamma'=-\tau\bm\beta$ 判断挠率的符号。
+\end{dxtips}
+
+\clearpage
+\begin{homework}[教材第71页，习题2.8，第1题（4）]
+\par\smallskip
+求下列平面曲线的相对曲率 $\kappa_r$：
+\[
+\text{（4）摆线：}\quad
+\bm r(t)=\bigl(a(t-\sin t),a(1-\cos t)\bigr),\qquad 0\le t\le2\pi.
+\]
+\end{homework}
+
+\begin{solution}
+先按摆线的通常约定，取 $a>0$ 为滚动圆的半径。采用教材有向平面的约定：
+单位切向量沿正向旋转 $90^\circ$ 得到单位法向量。相对曲率公式为
+\[
+\kappa_r(t)=\frac{x'(t)y''(t)-x''(t)y'(t)}
+{\bigl(x'(t)^2+y'(t)^2\bigr)^{3/2}}.
+\]
+由参数方程得
+\[
+x'=a(1-\cos t),\quad y'=a\sin t,\qquad
+x''=a\sin t,\quad y''=a\cos t.
+\]
+于是分子为
+\begin{align*}
+x'y''-x''y'
+&=a^2\bigl[(1-\cos t)\cos t-\sin^2t\bigr]\\
+&=a^2(\cos t-1)=-2a^2\sin^2\frac t2,
+\end{align*}
+而速度的平方为
+\[
+x'^2+y'^2=a^2\bigl[(1-\cos t)^2+\sin^2t\bigr]
+=4a^2\sin^2\frac t2.
+\]
+当 $0<t<2\pi$ 时，$\sin(t/2)>0$，所以
+\[
+\kappa_r(t)=\frac{-2a^2\sin^2(t/2)}{8a^3\sin^3(t/2)}
+=\boxed{-\frac1{4a\sin(t/2)}},\qquad 0<t<2\pi.
+\]
+在 $t=0$ 与 $t=2\pi$ 处，$\bm r'(t)=\bm0$，对应摆线的两个尖点，
+曲线在此不正则，因此相对曲率无定义。
+
+若仅假定 $a\neq0$，则速度为 $2|a|\sin(t/2)$，因而通式为
+\[
+\boxed{\kappa_r(t)=-\frac1{4|a|\sin(t/2)}},\qquad 0<t<2\pi.
+\]
+若 $a=0$，参数式退化为一个点，不构成正则曲线。
+\end{solution}
+
+\begin{dxtips}[相对曲率保留正负号]\label{hw:curves:tip5}
+相对曲率的分子是 $x'y''-x''y'$，不要取绝对值。
+也可以从切向量的方向角检查：$\theta(t)=\pi/2-t/2$ 在减小，
+故 $\kappa_r=\mathrm d\theta/\mathrm ds<0$。两个尖点不能代入正则曲线的曲率公式。
+\end{dxtips}
+
+\clearpage
+\begin{homework}[教材第52页，习题2.5，第5题]
+\par\smallskip
+证明：曲线
+\[
+\bm r(t)=(\cosh t,\sinh t,t)
+\]
+和曲线
+\[
+\bm r_1(u)=\left(\frac{e^{-u}}{\sqrt2},\frac{e^u}{\sqrt2},u+1\right)
+\]
+可以通过刚体运动彼此重合。试求出这个刚体运动。
+\end{homework}
+
+\begin{solution}
+由双曲函数的恒等式
+\[
+\cosh t-\sinh t=e^{-t},\qquad
+\cosh t+\sinh t=e^t,
+\]
+可将前两个坐标分别作差与和。令
+\[
+Q=\begin{pmatrix}
+\dfrac1{\sqrt2}&-\dfrac1{\sqrt2}&0\\[4pt]
+\dfrac1{\sqrt2}&\dfrac1{\sqrt2}&0\\[4pt]
+0&0&1
+\end{pmatrix},\qquad
+\bm b=\begin{pmatrix}0\\0\\1\end{pmatrix}.
+\]
+因为 $Q^{\mathsf T}Q=I$ 且 $\det Q=1$，所以
+$F(\bm x)=Q\bm x+\bm b$ 是一个保持定向的刚体运动。
+取参数对应 $u=t$，则
+\begin{align*}
+F(\bm r(t))
+&=\left(\frac{\cosh t-\sinh t}{\sqrt2},
+\frac{\cosh t+\sinh t}{\sqrt2},t+1\right)\\[3pt]
+&=\left(\frac{e^{-t}}{\sqrt2},\frac{e^t}{\sqrt2},t+1\right)
+=\bm r_1(t).
+\end{align*}
+这说明该运动将第一条曲线的每一点映到第二条曲线的对应点，
+且 $t$ 遍历 $\mathbb R$ 时覆盖整条第二曲线。故两条曲线可以通过刚体运动彼此重合。
+
+所求的一个刚体运动为
+\[
+\boxed{F(x,y,z)=\left(\frac{x-y}{\sqrt2},\frac{x+y}{\sqrt2},z+1\right)}.
+\]
+其几何意义是：绕 $z$ 轴按右手规则旋转 $\pi/4$，再沿 $z$ 轴正方向平移一个单位。
+\end{solution}
+
+\begin{dxtips}[用和与差识别旋转]\label{hw:curves:tip6}
+$e^{\pm t}=\cosh t\pm\sinh t$ 提示我们对前两个坐标作和与差。
+除以 $\sqrt2$ 后，变换矩阵恰好正交；第三个坐标的 $+1$ 则对应平移。
+直接验证 $F(\bm r(t))=\bm r_1(t)$ 就能说明两条曲线重合。
+\end{dxtips}
+
+\endgroup
