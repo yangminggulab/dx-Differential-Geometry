@@ -71,8 +71,87 @@ s(t)=\int_{t_0}^t|\vect r'(t)|\dd t
 
 称 \(\kappa(s)\) 为曲线 \(r(s)\) 在 \(s\) 处的曲率, 并且称 \(\frac{\mathrm{d}\alpha}{\mathrm{d}s}\) 为该曲线的曲率向量.
 \end{definition}
-
+\begin{note}
+    当 $s$ 是弧长参数时，一阶导数恰好就是单位切向量：
+\[
+\boldsymbol r'(s)=\boldsymbol\alpha(s).
+\]
+再对弧长 $s$ 求导，得到
+\[
+\boldsymbol r''(s)=\frac{d\boldsymbol\alpha}{ds}.
+\]
+因此，二阶导向量表示单位切向量沿曲线的变化率，
+而曲率是这个变化向量的模长：
+\[
+\kappa(s)
+=\left\|\frac{d\boldsymbol\alpha}{ds}\right\|
+=\|\boldsymbol r''(s)\|.
+\]
+\end{note}
+\begin{dxtips}[曲率是单位切向量对弧长的变化率的大小]
+  k读作卡帕。
+  曲率衡量的是曲线在某一点弯曲的程度：沿曲线每走单位长度，切线方向改变得有多快。
+弯得越急，曲率越大；直线的曲率为 \(0\)。半径为 \(R\) 的圆，曲率为 \(1/R\)，所以圆越小，曲率越大。
+\end{dxtips}
 % 来源：教材转换成果/微分几何/LaTeX源码/章节/第02章 曲线论/pages/page-0046.tex；原定理 3.2。
+\begin{example}
+设平面曲线以弧长 $s$ 为参数，$\theta(s)$ 为切线方向角，
+则单位切向量为
+\[
+\boldsymbol\alpha(s)=(\cos\theta(s),\sin\theta(s)).
+\]
+因此
+\[
+\frac{d\boldsymbol\alpha}{ds}
+=\frac{d\theta}{ds}(-\sin\theta,\cos\theta),
+\qquad
+\kappa(s)=\left\|\frac{d\boldsymbol\alpha}{ds}\right\|
+=\left|\frac{d\theta}{ds}\right|.
+\]
+即曲率等于切线方向角对弧长的变化率的绝对值。
+\end{example}
+\begin{definition}{曲率的计算公式}{curvature-formula}
+设 $\boldsymbol r(t)$ 是一条二阶连续可微的正则参数曲线，
+即 $\boldsymbol r'(t)\neq\boldsymbol 0$，其曲率为
+\[
+\kappa(t)=
+\frac{\lVert\boldsymbol r'(t)\times\boldsymbol r''(t)\rVert}
+{\lVert\boldsymbol r'(t)\rVert^3}.
+\]
+特别地，若 $s$ 为弧长参数，则
+\[
+\kappa(s)=\lVert\boldsymbol r''(s)\rVert.
+\]
+\end{definition}
+\begin{dxtips}
+   其实我们想求的就是 $\left\|\frac{d\boldsymbol\alpha}{ds}\right\|$，但是由于我们不方便直接得到 $\frac{d\boldsymbol\alpha}{ds}$，而我们能求的是对 $\boldsymbol r(t)$ 求导。$\boldsymbol r(t)$ 的导数其实就是速度大小乘以单位切向量，即 $\boldsymbol r'(t)=v\boldsymbol\alpha$，于是我们得到了 $\boldsymbol\alpha$。
+
+然后，为了出现 $\frac{d\boldsymbol\alpha}{ds}$，我们再次对 $\boldsymbol r'(t)$ 求导，出现了 $\boldsymbol r''(t)=v'\boldsymbol\alpha+v^2\frac{d\boldsymbol\alpha}{ds}$。这里需要注意的就是 $\frac{ds}{dt}=v$，这个要记住。
+
+然后，为了消除 $v'\boldsymbol\alpha$，也就是把速度大小变化的影响去掉，我们叉乘一阶导数和二阶导数也就是利用$\boldsymbol\alpha$ 与 $\frac{d\boldsymbol\alpha}{ds}$ 垂直，得到 $\boldsymbol r'\times\boldsymbol r''=v^3\boldsymbol\alpha\times\frac{d\boldsymbol\alpha}{ds}$。$\|\boldsymbol r'\times\boldsymbol r''\|=v^3\left\|\frac{d\boldsymbol\alpha}{ds}\right\|$。
+
+由于上面多了一个系数 $v^3$，所以要除以 $v^3$。又因为 $v=\|\boldsymbol r'(t)\|$，因为$\alpha$的模长是1
+\end{dxtips}
+\begin{example}
+一般参数 $t$ 下，二阶导数同时包含速度大小和方向的变化，而曲率只衡量方向变化。记 $v=\|\boldsymbol r'(t)\|=\frac{ds}{dt}$，则 $\boldsymbol r'=v\boldsymbol\alpha$。由链式法则，
+\[
+\boldsymbol r''
+=v'\boldsymbol\alpha
++v\frac{d\boldsymbol\alpha}{ds}\frac{ds}{dt}
+=v'\boldsymbol\alpha+v^2\frac{d\boldsymbol\alpha}{ds}.
+\]
+其中，$v'\boldsymbol\alpha$ 表示速度大小的变化，$v^2\frac{d\boldsymbol\alpha}{ds}$ 表示方向变化。因为 $\|\boldsymbol\alpha\|=1$，所以 $\boldsymbol\alpha\cdot\frac{d\boldsymbol\alpha}{ds}=0$，即第二部分垂直于切线。
+
+将 $\boldsymbol r'$ 与 $\boldsymbol r''$ 叉乘，平行于切线的部分被消去，得到 $\boldsymbol r'\times\boldsymbol r''=v^3\boldsymbol\alpha\times\frac{d\boldsymbol\alpha}{ds}$。由于右侧两个向量垂直，且 $\|\boldsymbol\alpha\|=1$，取模长得 $\|\boldsymbol r'\times\boldsymbol r''\|=v^3\kappa$，因此
+\[
+\kappa(t)=
+\frac{\|\boldsymbol r'(t)\times\boldsymbol r''(t)\|}
+{\|\boldsymbol r'(t)\|^3}.
+\]
+
+$\boldsymbol r$ 表示位置，$\boldsymbol r'$ 表示前进的方向和快慢，$\boldsymbol r''$ 表示它们的变化，其中垂直于切线的部分反映弯曲。计算曲率只需一阶、二阶导数；研究曲率变化和挠率时会用到三阶导数。
+\end{example}
+
 \begin{theorem}{直线的曲率判别}{dg-2-thm-3-2}
 曲线 \(C\) 是一条直线当且仅当它的曲率 \(\kappa(s) \equiv 0\).
 \end{theorem}
